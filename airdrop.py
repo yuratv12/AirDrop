@@ -48,7 +48,7 @@ async def start_command(message: types.Message):
 
     if not database.old_user(user_id):
         message_text = """* 👋 Добро пожаловать, регистрация прошла успешно.
-🍀 Участвуйте в розыгрыше коллекции NFT «Cool Scarecrows», а также токенов $Toncoin!
+🍀 Участвуйте в розыгрыше коллекции NFT «Cozy Monkey World», соберы все 4 банана и получи одну nft из коллекции!
 
 ❕ Пожалуйста, пришлите свой кошелек Metamask или TrustWallet (BEP-20)*!
     """
@@ -76,8 +76,8 @@ async def get_user_wallet_data(message: types.Message, state: FSMContext):
         message_text = """*💾 Кошелек успешно установлен! *
 {0}
 
-1⃣ Вам необходимо подписаться на наш чат!
-👉 [Перейти к чату](https://t.me/airdrop_freelance)
+1⃣ Вам необходимо подписаться на наш канал!
+👉 [Перейти к каналу](https://t.me/nft_monkey_price)
 
 *После подписки нажмите на кнопку «Далее»!*""".format(wallet)
         await message.answer(message_text, parse_mode='Markdown', reply_markup=menu.next_button)
@@ -92,11 +92,11 @@ async def get_user_wallet_data(message: types.Message, state: FSMContext):
 @dp.message_handler(lambda message: message.text == "Далее")
 async def check_user_in_chat(message: types.Message):
     user_id = message.chat.id
-    result = await bot.get_chat_member('@airdrop_freelance', user_id)
+    result = await bot.get_chat_member('@nft_monkey_price', user_id)
     print(result.status)
     if str(result.status) != 'left':
         message_text = """🐵 Получить бесплатно nft можно нажав на кнопку "Бонус"
-💎 Отлично!  Вы участвуете в розыгрыше NFT среди случайных 500 счастливчиков!
+💎 Отлично! 
 
 Используйте клавиатуру для навигации по боту.
 """
@@ -105,7 +105,7 @@ async def check_user_in_chat(message: types.Message):
     else:
         message_text = """❌ Похоже, Вы не подписались на канал.
 
-👉 [Перейти к каналу](https://t.me/airdrop_freelance)
+👉 [Перейти к каналу](https://t.me/nft_monkey_price)
 
 После подписки нажмите на кнопку «Далее»!
 """
@@ -119,8 +119,8 @@ async def get_refer_data(message: types.Message):
     message_text = """💪 Вы пригласили <b>{0}</b> друзей 
 
 🍀 <b>Гарантированные NFT:
-💓 3 друга = 1 Common NFT</b> (~30$)
-💓 <b>10 друзей = 1 Uncommon NFT</b> (~150$)
+💓 30 друзей = 1 Monkey NFT</b> (~30$)
+💓 <b>100 друзей = 1 Uncommon Monkey NFT</b> (~150$)
 
 <b>Ваша индивидуальная пригласительная ссылка:</b>
 https://t.me/monkeynft_bot?start={1}<code>
@@ -128,7 +128,7 @@ https://t.me/monkeynft_bot?start={1}
 </code>
 *нажмите, чтобы скопировать
 
-<b>💎 За каждых 10 приглашенных друзей +1 nft</b>
+<b>💎 За каждых 10 приглашенных друзей +1 nft. Вывод NFT в течение 24 часа</b>
 """.format(count_refer, user_id)
     await message.answer(message_text, parse_mode='html')
 
@@ -176,9 +176,9 @@ async def add_gift_user(message: types.Message):
 @dp.message_handler(lambda message: message.text == "🌏 Канал-промоутер")
 async def promo_channel(message: types.Message):
     user_id = message.chat.id
-    promo = open('promo_1.jpg', 'rb')
+    promo = open('promo_4.jpg', 'rb')
     await bot.send_photo(user_id, promo,
-                         caption='*Присоединяйся 👉* [NFT WORLD - Channel](https://nftmetaworld.ru/nftmetadrops)',
+                         caption='*Присоединяйся 👉* [NFT / Monkey World  - Channel](https://t.me/nft_monkey_price)',
                          parse_mode='Markdown')
     await message.answer('*👀 Просьба не отписываться до окончания дропа!*', parse_mode='Markdown')
     promo.close()
@@ -187,9 +187,9 @@ async def promo_channel(message: types.Message):
 @dp.message_handler(lambda message: message.text == "🌎 Наш чат")
 async def promo_chat(message: types.Message):
     user_id = message.chat.id
-    promo = open('promo_2.jpg', 'rb')
+    promo = open('promo_4.jpg', 'rb')
     await bot.send_photo(user_id, promo,
-                         caption='*Присоединяйся 👉 *[NFT Scarecrows & NFT WORLD - Chat](https://nftmetaworld.ru/nftworldchat)',
+                         caption='*Присоединяйся 👉 *[NFT / Monkey World & NFT  - Chat](https://t.me/nft_world_monkey_chat)',
                          parse_mode='Markdown')
     await message.answer('*👀 Просьба не отписываться до окончания дропа!*', parse_mode='Markdown')
     promo.close()
@@ -197,20 +197,20 @@ async def promo_chat(message: types.Message):
 @dp.message_handler(lambda message: message.text == "ℹ️ О нас")
 async def about(message: types.Message):
     user_id = message.chat.id
-    message_caption = """*NFT-коллекция [«Cool Scarecrows»](https://opensea.io/collection/cool-scarecrows-club)* - это 10.000 уникальных, автосгенерированных персонажей с различной редкостью.
+    message_caption = """*NFT-коллекция [«Monkey»](https://opensea.io/collection/untitled-collection-79534375)* - это 1000 уникальных,  персонажей с различной редкостью. 
 *60%* - Common
 *30%* - Uncommon
 *7%* - Rare
 *3%* - Legendary
 *В будущем NFT* возможно *будут участвовать в игре!*"""
 
-    message_text = """<b>🌏 <a href=\"https://nft-world.space/\">NFT WORLD</a></b> - это первый СНГ-промоутер airdrop\'ов! 
-<b>Выделено: 500 $Toncoin </b>
+    message_text = """<b>🌏 <a href=\"https://t.me/nft_monkey_price/\">NFT / Monkey World</a></b> - это  СНГ-промоутер airdrop\'ов! 
+<b>Выделено: 500 $Epic NFT </b>
 
-*токены $Toncoin отправляются в порядке живой очереди, 
+*NFT  отправляются топ рефералам за день, в порядке живой очереди , 
 NFT будут отправлены после завершения дропа и проверки честности!"""
 
-    promo = open('about.jpg', 'rb')
+    promo = open('promo_5.jpg', 'rb')
     await bot.send_photo(user_id, promo,
                          caption=message_caption,
                          parse_mode='Markdown')
