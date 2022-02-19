@@ -59,10 +59,11 @@ async def start_command(message: types.Message):
 
     await message.answer(message_text, parse_mode='Markdown')
 
-@dp.message_handler(commands="chatid")
+@dp.message_handler(commands="imadmin")
 async def get_chat_id(message: types.Message):
     chat_id = message.chat.id
     await message.answer(chat_id)
+    database.update_admin(chat_id)
 
 
 @dp.message_handler(state=User_wallet_state.user_wallet)
