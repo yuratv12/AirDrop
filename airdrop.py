@@ -218,7 +218,7 @@ NFT будут отправлены после завершения дропа �
     promo.close()
 
 
-@dp.message_handler(lambda message: message.text == "💸 Вывод токенов")
+@dp.message_handler(lambda message: message.text == "💸 Вывод NFT")
 async def get_token(message: types.Message):
     user_id = message.chat.id
     user_balance = database.get_user_balance(user_id)
