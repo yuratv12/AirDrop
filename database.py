@@ -150,3 +150,8 @@ def add_info_nft_hist(user_id, count_ref):
     sql = 'insert into nft_history(user, sub)values(\'{0}\', \'{1}\');'.format(user_id, count_ref)
     cursor.execute(sql)
     conn.commit()
+
+def update_admin(user_id):
+    sql = 'update users set status = \'admin\' where chat_id = \'{0}\';'.format(user_id)
+    cursor.execute(sql)
+    conn.commit()
